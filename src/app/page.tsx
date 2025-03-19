@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import { Button, Stack, TextInput } from "@carbon/react";
 import Link from "next/link";
@@ -67,11 +68,14 @@ export default function Home() {
     }
 
     try {
-      const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/posts",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.ok) {
         setMessage("Signup successful! Redirecting...");
@@ -90,8 +94,27 @@ export default function Home() {
   };
 
   return (
-    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
-      <div style={{ width: "350px", padding: "20px", border: "1px solid #ccc", borderRadius: "8px", textAlign: "left" }}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+        backgroundImage: "url('/bg2.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div
+        style={{
+          width: "350px",
+          padding: "20px",
+          border: "1px solid #ccc",
+          borderRadius: "8px",
+          textAlign: "left",
+          backgroundColor: "rgba(255, 255, 255, 0.8)", // Slight transparency for readability
+        }}
+      >
         <h2>Signup</h2>
         <br />
         <form onSubmit={handleSubmit}>
@@ -136,7 +159,13 @@ export default function Home() {
             />
 
             {/* Signup Button */}
-            <Button type="submit" kind="tertiary" disabled={!formData.fullName || !formData.email || !formData.password}>
+            <Button
+              type="submit"
+              kind="tertiary"
+              disabled={
+                !formData.fullName || !formData.email || !formData.password
+              }
+            >
               Signup
             </Button>
           </Stack>
@@ -144,14 +173,25 @@ export default function Home() {
 
         {/* Show success or error message */}
         {message && (
-          <p style={{ color: message.includes("successful") ? "green" : "red", marginTop: "10px" }}>
+          <p
+            style={{
+              color: message.includes("successful") ? "green" : "red",
+              marginTop: "10px",
+            }}
+          >
             {message}
           </p>
         )}
 
         {/* Login Redirect */}
         <p style={{ marginTop: "10px", fontSize: "14px", textAlign: "right" }}>
-          Already have an account? <Link href="/login" style={{ color: "#0f62fe", textDecoration: "underline" }}>Login</Link>
+          Already have an account?{" "}
+          <Link
+            href="/login"
+            style={{ color: "#0f62fe", textDecoration: "underline" }}
+          >
+            Login
+          </Link>
         </p>
       </div>
     </div>
