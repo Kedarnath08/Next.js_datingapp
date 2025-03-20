@@ -1,0 +1,63 @@
+.authContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1; // Makes sure the form doesn't get pushed too low
+}
+
+.authCard {
+  width: 350px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid black; // ✅ Black border added
+  border-radius: 8px; // ✅ Rounded edges for a clean look
+}
+
+.authMessage {
+  margin-top: 10px;
+}
+
+.authLink {
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.authGoogle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+
+  .googleLogo {
+    img {
+      border: black;
+      outline: none;
+    }
+  }
+}
+
+.authGoogleButton {
+  border: none;
+  background: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.authWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; // Changed from center to flex-start
+  height: 100vh;
+  padding-top: 50px; // Adds proper spacing from top
+}
+
+.authHeader {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px; // Increases space between heading and form
+  text-align: center;
+}

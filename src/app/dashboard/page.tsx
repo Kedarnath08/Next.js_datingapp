@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button, Grid, Column, Tile, Header, HeaderName } from "@carbon/react";
+import { Button, Grid, Column, Header, HeaderName } from "@carbon/react";
 import { logout } from "@/lib/firebase";
-import styles from "@/app/styles/dashboard.module.scss";
+import styles from "../styles/dashboard.module.scss";
+import { Archive, Delete, Folder, ChartBar } from "@carbon/icons-react"; // Carbon icons import
+import GlobalHeader from "@/components/GlobalHeader";
 
 export default function Dashboard() {
   const router = useRouter();
@@ -29,52 +31,50 @@ export default function Dashboard() {
   };
 
   return (
-    <div className={styles.dashboardContainer}>
-      {/* Carbon Header */}
-      <Header aria-label="Dashboard">
-        <HeaderName href="#" prefix="🚀">
-          Dashboard
-        </HeaderName>
-      </Header>
+    <>
+      {/* Global Header */}
+      <GlobalHeader />
 
-      <div className={styles.dashboardContent}>
-        <h2 className={styles.dashboardHeading}>
-          Welcome, {user?.name || "Guest"}! 🎉
-        </h2>
-        <p className={styles.dashboardText}>
-          Check out these amazing creative websites:
-        </p>
+      {/* Dashboard Title Section */}
+      <Grid fullWidth>
+        <Column lg={12} md={8} sm={4}>
+          <h2 className={styles.dashboardTitle}>Dashboard</h2>{" "}
+          {/* Applying the styles */}
+          <p>Welcome, Admin</p>
+        </Column>
+      </Grid>
 
-        {/* 🔹 Grid Section */}
-        <Grid className={styles.dashboardGrid}>
-          {[
-            { name: "🧊 Igloo", url: "https://www.igloo.inc/" },
-            {
-              name: "🏰 Townscrapper",
-              url: "https://oskarstalberg.com/Townscaper/#GSB0RARueC6Snc9E0lO5B",
-            },
-            { name: "🍺 Brewdistrict24", url: "https://brewdistrict24.com/en" },
-            { name: "🚗 Bruno", url: "https://bruno-simon.com/" },
-          ].map((site, index) => (
-            <Column key={index} lg={4} md={6} sm={12}>
-              <Tile className={styles.tile}>
-                <a href={site.url} target="_blank" className={styles.tileLink}>
-                  {site.name}
-                </a>
-              </Tile>
-            </Column>
-          ))}
-        </Grid>
-
-        {/* Logout Button */}
-        <Button
-          kind="danger"
-          onClick={handleLogout}
-          className={styles.logoutButton}
-        >
-          🚪 Logout
-        </Button>
-      </div>
-    </div>
+      {/* Action Buttons Section */}
+      <Grid>
+        <Column lg={3} md={6} sm={12}>
+          <Button kind="tertiary" className={styles.dashboardButton}>
+            {" "}
+            {/* Applying styles */}
+            Archive
+          </Button>
+        </Column>
+        <Column lg={3} md={6} sm={12}>
+          <Button kind="tertiary" className={styles.dashboardButton}>
+            {" "}
+            {/* Applying styles */}
+            Delete
+          </Button>
+        </Column>
+        <Column lg={3} md={6} sm={12}>
+          <Button kind="tertiary" className={styles.dashboardButton}>
+            {" "}
+            {/* Applying styles */}
+            Browse
+          </Button>
+        </Column>
+        <Column lg={3} md={6} sm={12}>
+          <Button kind="tertiary" className={styles.dashboardButton}>
+            {" "}
+            {/* Applying styles */}
+            Reports
+          </Button>
+        </Column>
+      </Grid>
+    </>
   );
 }

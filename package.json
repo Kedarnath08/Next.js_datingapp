@@ -11,12 +11,16 @@
   "dependencies": {
     "@carbon/icons-react": "^11.56.0",
     "@carbon/react": "^1.78.0",
+    "@carbon/styles": "^1.77.2",
+    "@carbon/themes": "^11.48.2",
     "firebase": "^11.4.0",
+    "formik": "^2.4.6",
     "next": "15.2.2",
     "next-auth": "^4.24.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "sass": "^1.86.0"
+    "sass": "^1.86.0",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@types/node": "^20",
